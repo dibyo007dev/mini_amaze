@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Amaze</title>
-</head>
-<body>
-    <h1>Welcome to Amazon</h1>
-</body>
-<footer>
-    <a href="#">Contact</a>
-    <a href="#">About</a>
-</footer>
-</html>
+{% extends 'layout.html' %}
+
+{% block body %}
+    <p>This is the home page</p>
+
+    {% if user %}
+
+    <h1>Hi {{user}} !!</h1>
+
+    {% else %}
+
+    <p>Login !</p>
+
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="enter username ... "><br>
+        <input type="password" name="password" placeholder="enter password .."><br>
+
+        <input type="submit" value="login">
+    </form>
+    {% endif %}
+
+    {% if session %}
+    <a href="/logout">Logout</a>
+    {% endif %}
+
+{% endblock body %}
